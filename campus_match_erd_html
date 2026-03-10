@@ -1,0 +1,93 @@
+digraph Pandas_ERD_HTML {
+	node [fontname=Helvetica]
+	rankdir=TB
+	users [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+        <TR>
+            <TD BORDER="0" ALIGN="LEFT"><B>Users</B></TD>
+        </TR>
+        <TR>
+            <TD PORT="user_id"><u>user_id</u></TD><TD PORT="role">role</TD><TD PORT="name">name</TD><TD PORT="email">email</TD><TD PORT="department">department</TD><TD PORT="enrollment_year">enrollment_year</TD><TD PORT="graduation_year">graduation_year</TD>
+        </TR>
+    </TABLE>
+    > shape=plaintext]
+	academic_records [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+        <TR>
+            <TD BORDER="0" ALIGN="LEFT"><B>Academic_Records</B></TD>
+        </TR>
+        <TR>
+            <TD PORT="record_id"><u>record_id</u></TD><TD PORT="user_id">user_id</TD><TD PORT="course_name">course_name</TD><TD PORT="grade">grade</TD><TD PORT="semester">semester</TD>
+        </TR>
+    </TABLE>
+    > shape=plaintext]
+	activity_records [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+        <TR>
+            <TD BORDER="0" ALIGN="LEFT"><B>Activity_Records</B></TD>
+        </TR>
+        <TR>
+            <TD PORT="activity_id"><u>activity_id</u></TD><TD PORT="user_id">user_id</TD><TD PORT="activity_type">activity_type</TD><TD PORT="activity_name">activity_name</TD><TD PORT="role_or_award">role_or_award</TD>
+        </TR>
+    </TABLE>
+    > shape=plaintext]
+	career_milestones [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+        <TR>
+            <TD BORDER="0" ALIGN="LEFT"><B>Career_Milestones</B></TD>
+        </TR>
+        <TR>
+            <TD PORT="milestone_id"><u>milestone_id</u></TD><TD PORT="user_id">user_id</TD><TD PORT="milestone_type">milestone_type</TD><TD PORT="title_or_role">title_or_role</TD><TD PORT="organization">organization</TD><TD PORT="achieved_date">achieved_date</TD>
+        </TR>
+    </TABLE>
+    > shape=plaintext]
+	coffee_chats [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+        <TR>
+            <TD BORDER="0" ALIGN="LEFT"><B>Coffee_Chats</B></TD>
+        </TR>
+        <TR>
+            <TD PORT="chat_id"><u>chat_id</u></TD><TD PORT="student_id">student_id</TD><TD PORT="alumni_id">alumni_id</TD><TD PORT="status">status</TD>
+        </TR>
+    </TABLE>
+    > shape=plaintext]
+	micro_tasks [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+        <TR>
+            <TD BORDER="0" ALIGN="LEFT"><B>Micro_Tasks</B></TD>
+        </TR>
+        <TR>
+            <TD PORT="task_id"><u>task_id</u></TD><TD PORT="poster_id">poster_id</TD><TD PORT="title">title</TD><TD PORT="description">description</TD><TD PORT="required_background">required_background</TD><TD PORT="status">status</TD>
+        </TR>
+    </TABLE>
+    > shape=plaintext]
+	interview_experiences [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+        <TR>
+            <TD BORDER="0" ALIGN="LEFT"><B>Interview_Experiences</B></TD>
+        </TR>
+        <TR>
+            <TD PORT="experience_id"><u>experience_id</u></TD><TD PORT="author_id">author_id</TD><TD PORT="company_name">company_name</TD><TD PORT="content">content</TD>
+        </TR>
+    </TABLE>
+    > shape=plaintext]
+	qa_threads [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+        <TR>
+            <TD BORDER="0" ALIGN="LEFT"><B>QA_Threads</B></TD>
+        </TR>
+        <TR>
+            <TD PORT="thread_id"><u>thread_id</u></TD><TD PORT="asker_id">asker_id</TD><TD PORT="question_content">question_content</TD><TD PORT="responder_id">responder_id</TD><TD PORT="answer_content">answer_content</TD>
+        </TR>
+    </TABLE>
+    > shape=plaintext]
+	academic_records:user_id -> users:user_id [color=blue]
+	activity_records:user_id -> users:user_id [color=blue]
+	career_milestones:user_id -> users:user_id [color=blue]
+	coffee_chats:student_id -> users:user_id [color=green]
+	coffee_chats:alumni_id -> users:user_id [color=purple]
+	micro_tasks:poster_id -> users:user_id [color=orange]
+	interview_experiences:author_id -> users:user_id [color=orange]
+	qa_threads:asker_id -> users:user_id [color=green]
+	qa_threads:responder_id -> users:user_id [color=purple]
+}

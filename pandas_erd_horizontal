@@ -1,6 +1,0 @@
-digraph Pandas_ERD {
-	node [fontname=Helvetica shape=record]
-	customers [label="Customers | <customer_id> customer_id | <name> name | <email> email | <created_at> created_at"]
-	orders [label="Orders | <order_id> order_id | <order_date> order_date | <amount> amount | <customer_id> customer_id"]
-	orders:customer_id -> customers:customer_id [label=" N:1" color=blue]
-}
